@@ -1,0 +1,29 @@
+feature_order:
+  - amount
+  - oldbalanceOrg
+  - newbalanceOrig
+  - oldbalanceDest
+  - newbalanceDest
+  - type_CASH_OUT
+  - type_DEBIT
+  - type_PAYMENT
+  - type_TRANSFER
+
+features:
+  numeric:
+    - amount
+    - oldbalanceOrg
+    - newbalanceOrig
+    - oldbalanceDest
+    - newbalanceDest
+
+  categorical:
+    - type_CASH_OUT
+    - type_DEBIT
+    - type_PAYMENT
+    - type_TRANSFER
+
+description: |
+  These are the engineered PaySim features used by the transaction fraud model.
+  The order must stay consistent with the preprocessing pipeline and the
+  trained logistic-regression model.

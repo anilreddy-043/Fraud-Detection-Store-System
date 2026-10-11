@@ -1,0 +1,18 @@
+model:
+  type: logistic_regression
+  class_weight: balanced
+  max_iter: 1000
+  random_state: 42
+  test_size: 0.2
+  stratify: true
+
+training:
+  data_path: data/processed/fraud_sampled.csv
+  target_column: isFraud
+  output_dir: models/production
+  metrics_file: training_metrics.json
+  metadata_file: model_metadata.json
+
+inference:
+  model_file: fraud_model.joblib
+  threshold: 0.5

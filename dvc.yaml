@@ -1,0 +1,22 @@
+stages:
+  prepare:
+    cmd: python scripts/train.py
+    deps:
+      - data/raw/PS_20174392719_1491204439457_log.csv
+      - scripts/train.py
+    params:
+      - params.yaml
+    outs:
+      - models/production/fraud_model.joblib
+      - models/production/training_metrics.json
+      - models/production/model_metadata.json
+
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+      - models/production/fraud_model.joblib
+      - data/processed/fraud_sampled.csv
+      - scripts/evaluate.py
+    outs:
+      - artifacts/reports/evaluation_report.json
+
