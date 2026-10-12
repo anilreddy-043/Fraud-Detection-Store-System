@@ -23,9 +23,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r backend/requirements.txt
+          python -m pip install pytest
 
       - name: Run backend tests
-        run: pytest -q
+        run: python -m pytest -q
+        env:
+          PYTHONPATH: ${{ github.workspace }}
 
   frontend-build:
     runs-on: ubuntu-latest
@@ -35,13 +38,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install frontend dependencies
         working-directory: frontend
-        run: npm install
+        run: npm ci
+
+      - name: Fix Vite executable permission
+        working-directory: frontend
+        run: chmod +x node_modules/.bin/vite
 
       - name: Build frontend
         working-directory: frontend
