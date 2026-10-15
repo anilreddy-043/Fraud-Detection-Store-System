@@ -1,6 +1,15 @@
+from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, Field
+
+
+def current_date() -> str:
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def current_time() -> str:
+    return datetime.now().strftime("%H:%M:%S")
 
 
 class PredictionRequest(BaseModel):
@@ -16,6 +25,8 @@ class PredictionRequest(BaseModel):
     customer_id: str = Field(default="customer-default")
     country: str = Field(default="US")
     hour: int = Field(default=12, ge=0, le=23)
+    transaction_date: str = Field(default_factory=current_date)
+    transaction_time: str = Field(default_factory=current_time)
     is_new_customer: bool = Field(default=False)
 
 

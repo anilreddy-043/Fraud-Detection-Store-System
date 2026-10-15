@@ -70,6 +70,36 @@ def test_predict_route():
     assert repeated_analytics["suspicious_transactions"] == analytics["suspicious_transactions"]
 
 
+def test_transaction_route_lists_all_saved_transactions():
+    transaction_id = f"txn_list_{uuid4().hex}"
+    payload = {
+        "transaction_id": transaction_id,
+        "amount": 125.0,
+        "type": "PAYMENT",
+        "oldbalanceOrg": 100.0,
+        "newbalanceOrig": 50.0,
+        "oldbalanceDest": 0,
+        "newbalanceDest": 0,
+        "merchant_id": "m-555",
+        "device_type": "mobile",
+        "customer_id": "c-555",
+        "country": "US",
+        "hour": 8,
+        "is_new_customer": False,
+    }
+
+    response = client.post("/predict", json=payload)
+    assert response.status_code == 200
+
+    saved = client.get("/transactions")
+    assert saved.status_code == 200
+    items = saved.json()
+    assert any(item["transaction_id"] == transaction_id for item in items)
+    stored = next(item for item in items if item["transaction_id"] == transaction_id)
+    assert "transaction_date" in stored
+    assert "transaction_time" in stored
+
+
 def test_model_route_returns_saved_performance_metrics():
     response = client.get("/models")
     assert response.status_code == 200

@@ -24,6 +24,8 @@ def initialize_database() -> None:
         "newbalanceOrig": "FLOAT NOT NULL DEFAULT 0",
         "oldbalanceDest": "FLOAT NOT NULL DEFAULT 0",
         "newbalanceDest": "FLOAT NOT NULL DEFAULT 0",
+        "transaction_date": "VARCHAR DEFAULT '2024-01-01'",
+        "transaction_time": "VARCHAR DEFAULT '00:00:00'",
     }
     with engine.begin() as connection:
         for name, definition in new_columns.items():

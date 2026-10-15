@@ -31,7 +31,7 @@ The project's saved evaluation report records **94.77% accuracy**, **92.33% frau
 
 This project gave me hands-on experience connecting an imbalanced-classification model to an API and a usable dashboard, persisting prediction history, and making model trade-offs visible to users. It also highlights why accuracy alone is not enough when evaluating fraud detection systems.
 
-**Project repository:** [Add your GitHub repository link]
+**Project repository:** []
 
 **Demo:** [Add a publicly accessible demo link, if available]
 
