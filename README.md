@@ -45,10 +45,6 @@ This project explores how machine learning can help identify potentially fraudul
 
 ![Store Fraud Detection Dashboard](frontend/public/dashboard.png)
 
-### Additional Dashboard View
-
-![Store Fraud Detection Dashboard - Additional View](frontend/public/dashboard-2.png)
-
 *The dashboard provides a visual overview of transaction assessments, risk classification, and model performance.*
 
 ## ⚙️ How the System Works
