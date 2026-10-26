@@ -239,3 +239,4 @@ It represents a practical step toward building machine learning applications tha
 ---
 
 ⭐ If you find this project interesting, feel free to explore the repository and its implementation.
+"# Fraud-Detection-Store-System" 
